@@ -1,0 +1,21 @@
+# viagem do Tagus para a Alameda, de bicicleta e comboio
+top-up 10
+tag 38.7372 -9.3024 start
+move start
+bike-up istt
+balance
+
+# pedalar até à estação
+zzz 3000
+move 38.6867 -9.3124
+bike-down stao
+balance
+move 38.706 -9.143
+# viajar de comboio
+zzz 15000
+bike-up cais
+# pedalar novamente ao Técnico
+zzz 3500
+move 38.7367 -9.139
+bike-down ista
+balance
