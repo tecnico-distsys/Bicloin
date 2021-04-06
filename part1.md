@@ -127,6 +127,8 @@ O `hub-tester` deve ser desenvolvido para albergar *testes de integração* (IT 
 
 ### Réplicas do *hub*
 
+(*OPCIONAL*: este requisito só vai ser avaliado na segunda parte do projeto)
+
 Para tolerar faltas do `hub` devem existir várias cópias (chamadas *réplicas*) do servidor a correr ao mesmo tempo.
 Como o `hub` tem estado imutável, basta lançar mais uma instância, carregada com os mesmos dados.
 
@@ -176,6 +178,8 @@ O `rec` deverá receber como argumentos na linha de comando, o servidor e o port
 
 2.3 Serviço de nomes
 --------------------
+
+(*OPCIONAL*: este requisito só vai ser avaliado na segunda parte do projeto)
 
 Cabe a cada servidor, quando lançado, registar-se a si próprio no serviço de nomes.
 Os nomes a usar para registar os `hub` são: `/grpc/bicloin/hub/1`, `/grpc/bicloin/hub/2`, e assim sucessivamente.
@@ -381,7 +385,7 @@ A primeira parte vale 10 valores em 20, distribuídos da seguinte forma:
 
 -   `app` (2 valores)
 
--   uso do *registry* por todos os serviços e suporte para vários `hub` com tratamento transparente de falta (1 valor)
+-   Guião de demonstração (1 valor)
 
 -   Qualidade do código -- de todos os componentes (2 valores)
 

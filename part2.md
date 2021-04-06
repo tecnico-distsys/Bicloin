@@ -134,17 +134,19 @@ A segunda parte vale 10 valores em 20, distribuídos da seguinte forma:
 
 - Correção de erros da primeira parte (1 valor)
 
+- Uso do *registry* por todos os serviços e suporte para vários `hub` com tratamento transparente de falta (1 valor)
+
 - Replicação do *rec* em múltiplos servidores (1 valor)
 
 - Leituras coerentes (1 valor)
 
-- Escritas coerentes  (1,5 valores)
+- Escritas coerentes  (1,25 valores)
 
-- Otimizações de desempenho (1,5 valores)
+- Otimizações de desempenho (1,25 valores)
 
-- Relatório e demonstração (2 valores)
+- Relatório e demonstração (1,75 valores)
 
-- Qualidade do código -- os mesmos aspetos da primeira parte -- em todos os componentes (2 valores)
+- Qualidade do código -- os mesmos aspetos da primeira parte -- em todos os componentes (1,75 valores)
 
 A data limite de entrega é: **sexta-feira, 7 de maio de 2021, 17:00**.
 
