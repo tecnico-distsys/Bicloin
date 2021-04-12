@@ -90,9 +90,9 @@ Todos os restantes nomes de máquinas e portos devem ser obtidos dinamicamente p
 
 O servidor `hub` deve disponibilizar os seguintes procedimentos remotos:
 
--   `balance` -- recebe o nome do utilizador e devolve o saldo atual de *bicloins* na sua conta;
+-   `balance` -- recebe o identificador do utilizador e devolve o saldo atual de *bicloins* na sua conta;
 
--   `top_up` --  recebe o nome do utilizador, o montante a carregar e o número de telemóvel para ativar a aplicação de pagamentos.
+-   `top_up` --  recebe o identificador do utilizador, o montante a carregar e o número de telemóvel para ativar a aplicação de pagamentos.
 Devolve o saldo após o carregamento.
 O número fornecido deve corresponder ao número associado ao utilizador.
 Por simplificação, assume-se que o carregamento é sempre bem sucedido e não existe necessidade de contactar um serviço de pagamentos;
@@ -106,7 +106,7 @@ As estações são retornadas por ordem crescente da distância às coordenadas 
 Para cada estação, é indicado **apenas** o seu **identificador** no resultado.
 Para calcular a distância entre coordenadas, deve ser usada a [fórmula de haversine](https://pt.wikipedia.org/wiki/F%C3%B3rmula_de_haversine);
 
--   `bike_up` e `bike_down` -- recebem o nome do utilizador, as suas coordenadas atuais, e a estação de onde se pretende levantar (`bike_up`) ou entregar (`bike_down`) uma bicicleta.
+-   `bike_up` e `bike_down` -- recebem o identificador do utilizador, as suas coordenadas atuais, e a estação de onde se pretende levantar (`bike_up`) ou entregar (`bike_down`) uma bicicleta.
 O utilizador deve estar na proximidade da estação (a menos de 200 metros).
 Um utilizador apenas pode levantar uma bicicleta de cada vez;
 
