@@ -12,7 +12,7 @@ O sistema *Bicloin* permite aos utilizadores comprarem pontos -- chamados **bicl
 ----------------
 
 Cada utilizador tem uma conta no sistema, identificada por um identificador alfanumérico, com comprimento mínimo de 3 e máximo de 10 caracteres.
-Além do identificador, cada utilizador tem o seu nome (texto com comprimento máximo de 30 caracteres) e um número de telemóvel (com código de país sempre incluído).
+Além do identificador, cada utilizador tem o seu nome (texto com comprimento mínimo de 3 e máximo de 30 caracteres) e um número de telemóvel (com código de país sempre incluído).
 
 A tabela seguinte apresenta os dados de um conjunto de utilizadores ([users.csv](users.csv)).
 
