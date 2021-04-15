@@ -327,6 +327,9 @@ o `hub`, `hub-tester`, `rec`, `rec-tester` e a `app`.
 ---------
 
 Cada membro da equipa tem que fornecer uma foto, com qualidade, tirada no último ano, para facilitar a identificação e comunicação.
+A identificação e foto deve ser colocada na pasta `report/`.
+Como referência, pode ser consultado o [relatório de exemplo](report/README.md).
+Para esta primeira parte deve ser preenchida apenas a secção **Autores**.
 
 5.2 Identificador de grupo
 --------------------------
