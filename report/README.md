@@ -9,11 +9,11 @@ Sistemas Distribuídos 2020-2021, segundo semestre
 
 *(preencher a tabela abaixo com dados da equipa; e depois apagar esta linha)*  
 
-| Número | Nome              | Utilizador                       | Correio eletrónico                  |
-| -------|-------------------|----------------------------------| ------------------------------------|
-| 11111  | Alice Distributed | <https://github.com/AliceUser>   | <mailto:alice@tecnico.ulisboa.pt>   |
-| 22222  | Bob Systems       | <https://github.com/BobUser>     | <mailto:bob@tecnico.ulisboa.pt>     |
-| 33333  | Charlie Rules     | <https://github.com/CharlieUser> | <mailto:charlie@tecnico.ulisboa.pt> |
+| Número | Nome              | Utilizador                                   | Correio eletrónico                  |
+| -------|-------------------|----------------------------------------------| ------------------------------------|
+| 11111  | Alice Distributed | <https://git.rnl.tecnico.ulisboa.pt/ist1...> | <mailto:alice@tecnico.ulisboa.pt>   |
+| 22222  | Bob Systems       | <https://git.rnl.tecnico.ulisboa.pt/ist1...> | <mailto:bob@tecnico.ulisboa.pt>     |
+| 33333  | Charlie Rules     | <https://git.rnl.tecnico.ulisboa.pt/ist1...> | <mailto:charlie@tecnico.ulisboa.pt> |
 
 *(usar imagens com 150px de altura; e depois apagar esta linha)*  
 ![Alice](alice.png) ![Bob](bob.png) ![Charlie](charlie.png)
@@ -23,7 +23,7 @@ Sistemas Distribuídos 2020-2021, segundo semestre
 
 _(que correções ou melhorias foram feitas ao código da primeira parte -- incluir link para commits no Git onde a alteração foi feita)_
 
-- [descrição da alteração](https://github.com/tecnico-distsys/CXX-Sauron/commit/156e1ac25798e2360b362b3a8fc474f7cfe64d01)
+- [descrição da alteração](https://github.com/tecnico-distsys/CXX-Bicloin/commit/a70e690b3655e76a0a1e0ff1137c0cb28cfe26a7)
 
 
 ## Modelo de faltas
