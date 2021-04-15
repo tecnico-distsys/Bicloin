@@ -271,7 +271,7 @@ A regra para as mensagens de confirmação de comandos é começar a linha com `
 
 É possível enviar o conteúdo de um ficheiro de texto para o programa, com o operador de redirecionamento `<` da _shell_ do sistema operativo:
 
-    $ app localhost 2181 bruno 38.737613 -9.303164 < commandos.txt
+    $ app localhost 2181 bruno +35193334444 38.737613 -9.303164 < commandos.txt
 
 O conteúdo do ficheiro [comandos.txt](comandos.txt) é enviado para o programa, tal como se estivesse a ser teclado, o que permite automatizar sequências de utilização.  
 Existem também linhas especiais:  
