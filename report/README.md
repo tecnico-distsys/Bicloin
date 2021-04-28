@@ -7,6 +7,9 @@ Sistemas Distribuídos 2020-2021, segundo semestre
 *(preencher linha abaixo com identificador de grupo, por exemplo, A07 ou T22; e depois apagar esta linha)*  
 **Grupo CXX**
 
+*(usar imagens com 150px de altura, com rosto enquadrado; e depois apagar esta linha)*  
+![Alice](alice.png) ![Bob](bob.png) ![Charlie](charlie.png)
+
 *(preencher a tabela abaixo com dados da equipa; e depois apagar esta linha)*  
 
 | Número | Nome              | Utilizador                                   | Correio eletrónico                  |
@@ -14,9 +17,6 @@ Sistemas Distribuídos 2020-2021, segundo semestre
 | 11111  | Alice Distributed | <https://git.rnl.tecnico.ulisboa.pt/ist1...> | <mailto:alice@tecnico.ulisboa.pt>   |
 | 22222  | Bob Systems       | <https://git.rnl.tecnico.ulisboa.pt/ist1...> | <mailto:bob@tecnico.ulisboa.pt>     |
 | 33333  | Charlie Rules     | <https://git.rnl.tecnico.ulisboa.pt/ist1...> | <mailto:charlie@tecnico.ulisboa.pt> |
-
-*(usar imagens com 150px de altura; e depois apagar esta linha)*  
-![Alice](alice.png) ![Bob](bob.png) ![Charlie](charlie.png)
 
 
 ## Melhorias da primeira parte
@@ -33,7 +33,7 @@ _(que faltas são toleradas, que faltas não são toleradas)_
 
 ## Solução
 
-_(Figura da solução de tolerância a faltas)_
+_(Figura da solução de tolerância a faltas -- e.g. UML Collaboration Diagram)_
 
 _(Breve explicação da solução, suportada pela figura anterior)_
 

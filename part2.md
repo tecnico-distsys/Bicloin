@@ -3,22 +3,33 @@
 
 O projeto de Sistemas Distribuídos (SD) corresponde ao desenvolvimento do sistema **Bicloin**, que permite gerir uma plataforma de bicicletas partilhadas numa cidade.
 
-Na primeira parte do projeto foi construída uma primeira versão do sistema, com servidores `hub` para armazenar dados imutáveis e validar regras de negócio, com um servidor `rec` para armazenar registos com dados mutáveis, e a aplicação `app` com uma interface-utilizador.
+Na primeira parte do projeto foi construída uma primeira versão do sistema, com um servidor `hub` para armazenar dados imutáveis e validar regras de negócio, com um servidor `rec` para armazenar registos com dados mutáveis, e a aplicação `app` com uma interface-utilizador.
 
 Este documento apresenta os requisitos para a segunda parte do projeto, onde o sistema vai ser estendido para permitir ter várias réplicas de `rec` e oferecer tolerância a faltas no acesso aos dados mutáveis.
 
 1 Replicação com coerência de dados
 -----------------------------------
 
-Como vimos na primeira parte e nas aulas teóricas, a replicação tem o benefício de permitir tolerar a falta de servidores.
-Por exemplo, na primeira parte do projecto, quando um dos servidores `hub` parava, era possível contactar outro.
-No entanto, esta substituição de servidores apenas foi possível de forma trivial porque não existiam variáveis partilhadas entre as diferentes réplicas.
-O sistema manteve-se coerente porque a informação mutável estava toda num único `rec`.
+Como vimos nas aulas teóricas, a replicação tem o benefício de permitir tolerar a falta de servidores.
+Por exemplo, na primeira parte do projecto, quando o servidor `hub` parava, era possível lançar outro.
+No entanto, esta substituição de servidores apenas é trivial quando não existem variáveis partilhadas entre diferentes réplicas.
+O sistema mantinha-se coerente porque a informação mutável estava toda num único `rec`.
 No entanto, isto significa que o `rec` é um **ponto central de falha**, isto é, se ele parar, todo o sistema pára, e a informação perde-se.
 
-A informação guardada é muito importante, pois inclui os saldos das contas dos utilizadores e a ocupação das estações de bicicletas.
+1.1 Tolerância a faltas com coerência de dados
+----------------------------------------------
+
+A informação guardada no `rec` é muito importante, pois inclui os saldos das contas dos utilizadores e a ocupação das estações de bicicletas.
 É muito importante que exista tolerância a faltas no `rec` e que as alterações aos saldos de cada utilizador (*bicloins* gastos e ganhos) não se percam, nem sejam corrompidos.
-Por outras palavras, é necessário replicar também o `rec` para ter **tolerância a faltas**, mas é fundamental manter a **coerência dos dados**.
+Por outras palavras, é necessário replicar o `rec` para ter **tolerância a faltas**, mas é fundamental manter a **coerência dos dados**.
+
+1.2 Controlo de concorrência
+----------------------------
+
+Por exemplo, para atualizar o saldo de um utilizador, é preciso ler saldo, incrementar, e depois escrever o novo saldo.
+Como as operações `read` e `write` são individuais, o `rec` não consegue garantir o **isolamento** de **sequências** de leituras e escritas nos mesmos registos.
+Sendo assim, compete ao `hub` garantir que apenas um procedimento pode estar a aceder a registos de um mesmo utilizador, e que apenas um procedimento pode estar a aceder a registos de uma mesma estação.
+É necessário usar mecanismos de sincronização adequados porque o `hub` é um servidor gRPC *multi-threaded*, com várias tarefas a tratar de pedidos em simultâneo.
 
 ----
 
@@ -29,6 +40,8 @@ Nesta segunda parte, vão existir várias *réplicas* do `rec`, cada uma com uma
 A figura seguinte mostra uma visão global dos componentes da solução.
 
 ![System](img/system2.jpg)
+
+Por simplificação, deve existir uma única instância do `hub`.
 
 ----
 
@@ -58,7 +71,7 @@ Como modelos de interação e faltas, deve assumir-se que:
 
 - As falhas das réplicas do `rec` são transientes e não definitivas;
 
-- Por simplificação, assume-se que as réplicas do `hub` não falham durante o processamento de operações, i.e., não deixam operações inacabadas;
+- Por simplificação, assume-se que o `hub` não falha durante o processamento de procedimentos remotos, i.e., não deixa procedimentos inacabados;
 
 - Embora o conjunto de gestores de réplica seja estático, os seus endereços não são conhecidos _a priori_ e podem variar ao longo do tempo.
 As réplicas devem ser descobertas através do serviço de nomes.
@@ -85,6 +98,7 @@ Por desempenho, entende-se o **tempo de resposta**, desde o momento em que é fe
 
 Sugere-se que se implemente primeiro uma versão simples da solução, sem preocupações maiores de desempenho.
 Depois, o código desta primeira solução deve ser instrumentado para medir, por exemplo:
+
 - o tempo de resposta ao pedidos (medido por quem faz as chamadas remotas);
 - o número de pedidos `read` e o número de pedidos `write`, para permitir calcular o rácio entre estes procedimentos.
 
@@ -134,13 +148,13 @@ A segunda parte vale 10 valores em 20, distribuídos da seguinte forma:
 
 - Correção de erros da primeira parte (1 valor)
 
-- Uso do *registry* por todos os serviços e suporte para vários `hub` com tratamento transparente de falta (1 valor)
+- Uso do *registry* *ZooKeeper* por todos os serviços (1 valor)
 
 - Replicação do *rec* em múltiplos servidores (1 valor)
 
 - Leituras coerentes (1 valor)
 
-- Escritas coerentes  (1,25 valores)
+- Escritas coerentes (1,25 valores)
 
 - Otimizações de desempenho (1,25 valores)
 
@@ -164,13 +178,14 @@ Conteúdos obrigatórios:
 
 - Definição do modelo de faltas (que faltas são toleradas, que faltas não são toleradas);
 
-- Figura da solução de tolerância a faltas;
+- Figura da solução de tolerância a faltas -- recomenda-se o desenho de um [diagrama UML de colaboração](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-uml-collaboration-diagram/);
 
 - Breve explicação da solução, suportada pela figura anterior;
 
 - Explicação do protocolo em detalhe (descrição das trocas de mensagens);
 
-- Tabela-resumo dos dados de desempenho recolhidos, com breve explicação;
+- Tabela-resumo dos dados de desempenho recolhidos, com breve explicação.
+Devem ser apresentados dados ANTES e DEPOIS das otimizações;
 
 - Descrição de opções de implementação, incluindo otimizações e melhorias introduzidas.
 
