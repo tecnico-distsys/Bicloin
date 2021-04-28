@@ -69,7 +69,7 @@ O prémio de devolução deve ser sempre positivo, para encorajar os utilizadore
 ------------------------
 
 A figura seguinte mostra uma visão global dos componentes da solução a construir.
-Podem existir várias aplicações móveis `app`, um ou mais `hub`, um `rec` (para já) e um serviço de nomes (*registry*).
+Podem existir várias aplicações móveis `app`, um `hub`, um `rec` (para já) e um serviço de nomes (*registry*).
 
 ![System](img/system1.jpg)
 
@@ -81,7 +81,7 @@ O `hub` contém apenas informação da aplicação que é **imutável**, ou seja
 O armazenamento de informação mutável é feito no `rec` (abreviatura de *record*).
 O `rec` oferece procedimentos remotos básicos de leitura/escrita de registos, em que cada registo tem um identificador único (textual, sem espaços) e um valor.
 
-Os `hub` e `rec` registam-se no *registry*, que é um **serviço de nomes**.
+O `hub` e `rec` registam-se no *registry*, que é um **serviço de nomes**.
 Apenas o endereço e porto do *registry* deve ser conhecido à partida.
 Todos os restantes nomes de máquinas e portos devem ser obtidos dinamicamente por consulta do *registry*.
 
@@ -129,8 +129,8 @@ O `hub-tester` deve ser desenvolvido para albergar *testes de integração* (IT 
 
 (*OPCIONAL*: este requisito só vai ser avaliado na segunda parte do projeto)
 
-Para tolerar faltas do `hub` devem existir várias cópias (chamadas *réplicas*) do servidor a correr ao mesmo tempo.
-Como o `hub` tem estado imutável, basta lançar mais uma instância, carregada com os mesmos dados.
+Para tolerar faltas do `hub` podem existir várias cópias (chamadas *réplicas*) do servidor, mas apenas uma vai estar ativa e registada no *registry* ao mesmo tempo.
+Como o `hub` tem estado imutável, para recuperar o servidor, basta lançar nova instância carregada com os mesmos dados.
 
 ### Argumentos
 
@@ -155,6 +155,9 @@ Isto permite distinguir quando se está a fazer o lançamento inicial ou quando 
 2.2 Servidor `rec`
 -----------------
 
+O `rec` deve ser independente do `hub` e poderá ser utilizado para suportar outras aplicações.
+Por outras palavras, o `rec` não deve conter lógica da aplicação.
+
 O `rec` deve disponibilizar os seguintes procedimentos remotos:
 
 - `read` -- recebe o nome do registo, e devolve o valor atual;
@@ -165,6 +168,8 @@ O `rec` deve disponibilizar os seguintes procedimentos remotos:
 
 Os registos são implicitamente criados da primeira vez que existe um acesso com o seu nome, seja uma escrita ou uma leitura.
 Quando um registo é criado por uma leitura, deve ser preenchido com um valor por omissão que simbolize *vazio*.
+
+Os registos poderão ser fortemente ou fracamente tipificados, ou seja, poderá existir um tipo de dados explícito para o registo, que depois é validado, ou, alternativamente, os registos terão um tipo genérico, cabendo depois à aplicação fazer as conversões e validações necessárias.
 
 ### Testes de integração
 
@@ -224,6 +229,7 @@ Carregar 15 Euros em *bicloins*:
     > top-up 15
     alice 150 BIC
 
+A aplicação permite a criação de etiquetas, que apenas existem durante a sessão onde são criadas.
 Criar uma etiqueta para coordenadas e depois usar a etiqueta para movimentações:
 
     > tag 38.7376 -9.3031 loc1
@@ -266,6 +272,10 @@ Devolver a bicicleta (é necessário estar próximo da estação):
     OK
 
 A regra para as mensagens de confirmação de comandos é começar a linha com `OK` ou `ERRO`, seguido de mais texto, sempre que seja útil, mas ocupando apenas uma linha de texto.
+
+Sair da aplicação:
+
+    > exit
 
 ### Redirecionamento de dados
 
@@ -326,7 +336,7 @@ o `hub`, `hub-tester`, `rec`, `rec-tester` e a `app`.
 5.1 Fotos
 ---------
 
-Cada membro da equipa tem que fornecer uma foto, com qualidade, tirada no último ano, para facilitar a identificação e comunicação.
+Cada membro da equipa tem que fornecer uma foto enquadrada no rosto, com qualidade, tirada no último ano, para facilitar a identificação e comunicação.
 A identificação e foto deve ser colocada na pasta `report/`.
 Como referência, pode ser consultado o [relatório de exemplo](report/README.md).
 Para esta primeira parte deve ser preenchida apenas a secção **Autores**.
