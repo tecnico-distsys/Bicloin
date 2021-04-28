@@ -31,7 +31,7 @@ Para isso basta ir à pasta *rec* e executar:
 $ mvn compile exec:java
 ```
 
-Este comando vai colocar o *rec* no endereço *localhost* e na porta *8091*.
+Este comando vai colocar o *rec* no endereço *localhost* e no porto *8091*.
 
 Para confirmar o funcionamento do servidor com um *ping*, fazer:
 
@@ -55,7 +55,7 @@ TODO
 
 ### 1.5. *App*
 
-Iniciar a aplicação com a utilizadora alice:
+Iniciar a aplicação com a utilizadora `alice`:
 
 ```sh
 $ app localhost 2181 alice +35191102030 38.7380 -9.3000
@@ -63,7 +63,7 @@ $ app localhost 2181 alice +35191102030 38.7380 -9.3000
 
 **Nota:** Para poder correr o script *app* diretamente é necessário fazer `mvn install` e adicionar ao *PATH* ou utilizar diretamente os executáveis gerados na pasta `target/appassembler/bin/`.
 
-Abrir outra consola, e iniciar a aplicação com o utilizador bruno.
+Abrir outra consola, e iniciar a aplicação com o utilizador `bruno`.
 
 Depois de lançar todos os componentes, tal como descrito acima, já temos o que é necessário para usar o sistema através dos comandos.
 
