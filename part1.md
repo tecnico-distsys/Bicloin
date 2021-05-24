@@ -245,9 +245,9 @@ Apresentar a localização atual do utilizador:
 Listar as *n* estações mais próximas (*n*=3 no exemplo seguinte):
 
     > scan 3
-    istt, lat 38.7372, -9.3023 long, 20 docas, 4 BIC prémio, 12 bicicletas, a 82 metros
-    stao, lat 38.6867, -9.3124 long, 30 docas, 3 BIC prémio, 20 bicicletas, a 5717 metros
-    jero, lat 38.6972, -9.2064 long, 30 docas, 3 BIC prémio, 20 bicicletas, a 9517 metros
+    istt, lat 38.7372 -9.3023 long, 20 docas, 4 BIC prémio, 12 bicicletas, a 82 metros
+    stao, lat 38.6867 -9.3124 long, 30 docas, 3 BIC prémio, 20 bicicletas, a 5717 metros
+    jero, lat 38.6972 -9.2064 long, 30 docas, 3 BIC prémio, 20 bicicletas, a 9517 metros
 
 As estações aparecem listadas, uma por linha, com os seguintes atributos (separados por vírgula e espaço):
 identificador, coordenadas, capacidade, prémio, número de bicicletas disponíveis, e distância para a posição do utilizador.
@@ -255,7 +255,7 @@ identificador, coordenadas, capacidade, prémio, número de bicicletas disponív
 Listar informação de uma estação:
 
     > info istt
-    IST Taguspark, lat 38.7372, -9.3023 long, 20 docas, 4 BIC prémio, 12 bicicletas, 22 levantamentos, 7 devoluções, https://www.google.com/maps/place/38.7372,-9.3023
+    IST Taguspark, lat 38.7372 -9.3023 long, 20 docas, 4 BIC prémio, 12 bicicletas, 22 levantamentos, 7 devoluções, https://www.google.com/maps/place/38.7372,-9.3023
 
 Levantar bicicleta da estação indicada e pedalar para outra posição:
 
